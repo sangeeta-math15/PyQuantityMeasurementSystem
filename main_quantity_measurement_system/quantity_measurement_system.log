@@ -1,0 +1,7 @@
+root | DEBUG | 2022-01-06 23:35:57,470 | centimeter length is 1300
+root | DEBUG | 2022-01-06 23:36:07,952 | kilometer length is 0.02
+root | DEBUG | 2022-01-06 23:36:22,130 | centimeter length is 1500
+root | DEBUG | 2022-01-06 23:37:15,959 | kelvin temperature is 287.15
+
+root | DEBUG | 2022-01-06 23:41:37,006 | kelvin temperature is 289.15
+root | DEBUG | 2022-01-06 23:44:40,848 | fahrenheit temperature is 57.2
