@@ -22,7 +22,9 @@ class QuantityMeasurementSystem:
     def get_input(self, choice, value):
         """
 
-        :type choice:
+        :param choice: given by user
+        :param value: numeric value given by user input
+        :return:
         """
         choice_dict = {1: self.length_meter_to_centimeter_conversion,
                        2: self.length_meter_to_kilometer_conversion,
@@ -34,7 +36,6 @@ class QuantityMeasurementSystem:
                        }
         converted_value = choice_dict.get(choice)(value)
         return converted_value
-
 
     def length_meter_to_centimeter_conversion(self, input_length):
         """
@@ -49,20 +50,18 @@ class QuantityMeasurementSystem:
             logging.exception("Exception due to invalid input")
             print('Please give valid number input')
 
-
     def length_meter_to_kilometer_conversion(self, input_length):
         """
         :param input_length: The length to be converted which is given by user
         :return: converted kilometer length
         """
         try:
-            kilo_meter_length = round((input_length * self.METER_TO_KILOMETER), 2)
+            kilo_meter_length = round((input_length * self.METER_TO_KILOMETER), 5)
             logging.debug("kilometer length is {}".format(kilo_meter_length))
             return kilo_meter_length
         except TypeError:
             logging.exception("Exception due to invalid input")
             print('Please give valid number input')
-
 
     def weight_grams_to_kilograms_conversion(self, input_weight):
         """
@@ -70,7 +69,7 @@ class QuantityMeasurementSystem:
         :return: converted kilogram weight
         """
         try:
-            kilo_gram_weight = round((input_weight * self.GRAMS_TO_KILOGRAM), 2)
+            kilo_gram_weight = round((input_weight * self.GRAMS_TO_KILOGRAM), 5)
             logging.debug("kilogram weight is {}".format(kilo_gram_weight))
             return kilo_gram_weight
         except TypeError:
@@ -90,7 +89,6 @@ class QuantityMeasurementSystem:
             logging.exception("Exception due to invalid input")
             print('Please give valid number input')
 
-
     def temperature_celsius_to_fareheit(self, input_temperature):
         """
         :param input_temperature: The temperature to be converted which is given by user
@@ -104,7 +102,6 @@ class QuantityMeasurementSystem:
             logging.exception("Exception due to invalid input")
             print('Please give valid number input')
 
-
     def temperature_farenheit_to_celsius(self, input_temperature):
         """
         :param input_temperature: The temperature to be converted which is given by user
@@ -117,7 +114,6 @@ class QuantityMeasurementSystem:
         except TypeError:
             logging.exception("Exception due to invalid input")
             print('Please give valid number input')
-
 
     def temperature_celsius_to_kelvin(self, input_temperature):
         """
@@ -137,54 +133,23 @@ if __name__ == '__main__':
 
     quantity = QuantityMeasurementSystem()
 
-    try:
-        while True:
+    while True:
 
-            print("""
-            
-                   1.meter_to_centimeter_conversion
-                   2.meter_to_kilometer_conversion
-                   3.grams_to_kilograms_conversion
-                   4.grams_to_milligrams_conversion
-                   5.celsius_to_farenheit
-                   6.farenheit_to_celsius
-                   7.celsius_to_kelvin
-                   
-                   """)
-
+        print("""            
+               1.meter_to_centimeter_conversion
+               2.meter_to_kilometer_conversion
+               3.grams_to_kilograms_conversion
+               4.grams_to_milligrams_conversion
+               5.celsius_to_farenheit
+               6.farenheit_to_celsius
+               7.celsius_to_kelvin
+               """)
+        try:
             choice = int(input("Enter your choice:- "))
             input_m = int(input("Enter number: "))
+            res = quantity.get_input(choice, input_m)
+            print(res)
 
-            if choice == 1:
-                res = quantity.get_input(1, input_m)
-                print(res)
+        except TypeError:
+            logging.exception("Enter proper value!!!")
 
-            elif choice == 2:
-                res = quantity.get_input(2, input_m)
-                print(res)
-
-            elif choice == 3:
-                res = quantity.get_input(1, input_m)
-                print(res)
-
-            elif choice == 4:
-                res = quantity.get_input(3, input_m)
-                print(res)
-
-            elif choice == 5:
-                res = quantity.get_input(4, input_m)
-                print(res)
-
-            elif choice == 6:
-                res = quantity.get_input(5, input_m)
-                print(res)
-
-            elif choice == 7:
-                res = quantity.get_input(7, input_m)
-                print(res)
-
-            else:
-                break
-
-    except ValueError:
-        logging.exception("Enter proper value!!!")
